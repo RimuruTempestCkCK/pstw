@@ -2,63 +2,101 @@
 include '../../koneksi.php';
 include '../../session.php';
 checkLogin();
+checkRole('kepala_uptd');
 
 $query = "SELECT * FROM lansia ORDER BY nama_lansia ASC";
 $result = mysqli_query($koneksi, $query);
+
+include '../../includes/header.php';
+include '../../includes/sidebar.php';
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Laporan Data Lansia</title>
-    <style>
-        body { font-family: sans-serif; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { border: 1px solid #000; padding: 8px; text-align: left; }
-        .header { text-align: center; margin-bottom: 30px; }
-        .no-print { margin-bottom: 20px; }
-    </style>
-</head>
-<body>
-    <div class="no-print">
-        <button onclick="window.print()">Cetak Laporan</button>
-        <button onclick="window.close()">Tutup</button>
-    </div>
 
-    <div class="header">
-        <h2>PSTW KASIH SAYANG IBU</h2>
-        <h3>LAPORAN DATA LANSIA</h3>
-        <hr>
-    </div>
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row page-titles mx-0">
+            <div class="col-sm-6 p-md-0">
+                <div class="welcome-text">
+                    <h4>Laporan Data Lansia</h4>
+                    <span class="ml-1">PSTW Kasih Sayang Ibu</span>
+                </div>
+            </div>
+            <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Laporan</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Data Lansia</a></li>
+                </ol>
+            </div>
+        </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Nama Lansia</th>
-                <th>Umur</th>
-                <th>Jenis Kelamin</th>
-                <th>Kondisi Kesehatan</th>
-                <th>Status Sosial</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php $no = 1; while ($row = mysqli_fetch_assoc($result)): ?>
-            <tr>
-                <td><?php echo $no++; ?></td>
-                <td><?php echo $row['nama_lansia']; ?></td>
-                <td><?php echo $row['umur']; ?></td>
-                <td><?php echo $row['jenis_kelamin'] == 'L' ? 'Laki-laki' : 'Perempuan'; ?></td>
-                <td><?php echo $row['kondisi_health']; ?></td>
-                <td><?php echo $row['status_sosial']; ?></td>
-            </tr>
-            <?php endwhile; ?>
-        </tbody>
-    </table>
-
-    <div style="margin-top: 50px; text-align: right;">
-        <p>Dicetak pada: <?php echo date('d-m-Y H:i'); ?></p>
-        <br><br><br>
-        <p>(......................................)</p>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Data Seluruh Lansia</h4>
+                        <button onclick="window.print()" class="btn btn-primary btn-sm"><i class="fa fa-print"></i> Cetak Laporan</button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="example" class="display" style="min-width: 845px">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Lansia</th>
+                                        <th>Umur</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>Kondisi Kesehatan</th>
+                                        <th>Status Sosial</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $no = 1; while ($row = mysqli_fetch_assoc($result)): ?>
+                                    <tr>
+                                        <td><?php echo $no++; ?></td>
+                                        <td><?php echo $row['nama_lansia']; ?></td>
+                                        <td><?php echo $row['umur']; ?></td>
+                                        <td><?php echo $row['jenis_kelamin'] == 'L' ? 'Laki-laki' : 'Perempuan'; ?></td>
+                                        <td><?php echo $row['kondisi_health']; ?></td>
+                                        <td><?php echo $row['status_sosial']; ?></td>
+                                    </tr>
+                                    <?php endwhile; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</body>
-</html>
+</div>
+
+<style>
+@media print {
+    .header, .quixnav, .footer, .nav-header, .page-titles, .card-header button, .btn {
+        display: none !important;
+    }
+    .content-body {
+        margin-left: 0 !important;
+        padding: 0 !important;
+    }
+    .card {
+        border: none !important;
+        box-shadow: none !important;
+    }
+    .card-body {
+        padding: 0 !important;
+    }
+    .table-responsive {
+        overflow: visible !important;
+    }
+    table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+    }
+    th, td {
+        border: 1px solid #000 !important;
+        padding: 8px !important;
+    }
+}
+</style>
+
+<?php include '../../includes/footer.php'; ?>
