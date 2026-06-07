@@ -1,0 +1,20 @@
+Aktif,Stabil,Baik,Hadir,Baik,Sehat,Stabil
+Aktif,Stabil,Baik,Hadir,Baik,Sehat,Stabil
+Aktif,Senang,Baik,Hadir,Baik,Sehat,Stabil
+Kurang Aktif,Stabil,Kurang,Hadir,Baik,Sehat,Kurang Aktif
+Kurang Aktif,Stabil,Menyendiri,Hadir,Baik,Sehat,Kurang Aktif
+Kurang Aktif,Sedih,Menyendiri,Tidak Hadir,Kurang,Sakit,Perlu Perhatian
+Kurang Aktif,Cemas,Kurang,Hadir,Kurang,Sehat,Perlu Perhatian
+Aktif,Cemas,Baik,Hadir,Baik,Pusing,Perlu Perhatian
+Kurang Aktif,Sedih,Menyendiri,Tidak Hadir,Kurang,Demam,Berisiko Mengalami Perubahan Perilaku
+Kurang Aktif,Tidak Stabil,Menyendiri,Tidak Hadir,Kurang,Sakit,Berisiko Mengalami Perubahan Perilaku
+Aktif,Stabil,Baik,Hadir,Baik,Sehat,Stabil
+Aktif,Stabil,Baik,Hadir,Baik,Sehat,Stabil
+Kurang Aktif,Stabil,Baik,Hadir,Baik,Sehat,Stabil
+Aktif,Stabil,Kurang,Hadir,Baik,Sehat,Stabil
+Kurang Aktif,Cemas,Kurang,Hadir,Baik,Sehat,Perlu Perhatian
+Kurang Aktif,Sedih,Kurang,Hadir,Baik,Sehat,Perlu Perhatian
+Aktif,Stabil,Menyendiri,Hadir,Baik,Sehat,Kurang Aktif
+Kurang Aktif,Stabil,Menyendiri,Hadir,Baik,Sehat,Kurang Aktif
+Kurang Aktif,Stabil,Menyendiri,Hadir,Kurang,Sehat,Kurang Aktif
+Kurang Aktif,Tidak Stabil,Menyendiri,Tidak Hadir,Tidak Teratur,Sakit,Berisiko Mengalami Perubahan Perilaku
