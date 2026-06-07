@@ -20,7 +20,7 @@ include '../includes/sidebar.php';
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
-                <a href="kategori_tambah.php" class="btn btn-primary">Tambah Kategori</a>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalTambah">Tambah Kategori</button>
             </div>
         </div>
 
@@ -43,8 +43,15 @@ include '../includes/sidebar.php';
                                         <td><?php echo $row['nama_kategori']; ?></td>
                                         <td><?php echo $row['keterangan']; ?></td>
                                         <td>
-                                            <a href="kategori_edit.php?id=<?php echo $row['id_kategori']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                                            <a href="kategori_hapus.php?id=<?php echo $row['id_kategori']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus kategori ini?')">Hapus</a>
+                                            <button type="button" class="btn btn-warning btn-sm btn-edit" 
+                                                data-toggle="modal" 
+                                                data-target="#modalEdit"
+                                                data-id="<?php echo $row['id_kategori']; ?>"
+                                                data-nama="<?php echo $row['nama_kategori']; ?>"
+                                                data-ket="<?php echo $row['keterangan']; ?>">
+                                                Edit
+                                            </button>
+                                            <a href="../proses/kategori_proses.php?aksi=hapus&id=<?php echo $row['id_kategori']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus kategori ini?')">Hapus</a>
                                         </td>
                                     </tr>
                                     <?php endwhile; ?>
@@ -58,4 +65,75 @@ include '../includes/sidebar.php';
     </div>
 </div>
 
+<!-- Modal Tambah -->
+<div class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Tambah Kategori Perilaku</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <form action="../proses/kategori_proses.php?aksi=tambah" method="POST">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Nama Kategori</label>
+                        <input type="text" name="nama_kategori" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Keterangan</label>
+                        <textarea name="keterangan" class="form-control" rows="4"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Edit -->
+<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Kategori Perilaku</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <form action="../proses/kategori_proses.php?aksi=edit" method="POST">
+                <div class="modal-body">
+                    <input type="hidden" name="id_kategori" id="edit-id">
+                    <div class="form-group">
+                        <label>Nama Kategori</label>
+                        <input type="text" name="nama_kategori" id="edit-nama" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Keterangan</label>
+                        <textarea name="keterangan" id="edit-ket" class="form-control" rows="4"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <?php include '../includes/footer.php'; ?>
+
+<script>
+$(document).ready(function() {
+    $('.btn-edit').on('click', function() {
+        const id = $(this).data('id');
+        const nama = $(this).data('nama');
+        const ket = $(this).data('ket');
+
+        $('#edit-id').val(id);
+        $('#edit-nama').val(nama);
+        $('#edit-ket').val(ket);
+    });
+});
+</script>

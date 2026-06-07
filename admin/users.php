@@ -21,7 +21,7 @@ include '../includes/sidebar.php';
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
-                <a href="users_tambah.php" class="btn btn-primary">Tambah Pengguna</a>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalTambah">Tambah Pengguna</button>
             </div>
         </div>
 
@@ -48,9 +48,17 @@ include '../includes/sidebar.php';
                                         <td><?php echo ucfirst($row['role']); ?></td>
                                         <td><?php echo $row['created_at']; ?></td>
                                         <td>
-                                            <a href="users_edit.php?id=<?php echo $row['id_user']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                            <button type="button" class="btn btn-warning btn-sm btn-edit" 
+                                                data-toggle="modal" 
+                                                data-target="#modalEdit"
+                                                data-id="<?php echo $row['id_user']; ?>"
+                                                data-nama="<?php echo $row['nama']; ?>"
+                                                data-username="<?php echo $row['username']; ?>"
+                                                data-role="<?php echo $row['role']; ?>">
+                                                Edit
+                                            </button>
                                             <?php if ($row['id_user'] != $_SESSION['id_user']): ?>
-                                                <a href="users_hapus.php?id=<?php echo $row['id_user']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus pengguna ini?')">Hapus</a>
+                                                <a href="../proses/users_proses.php?aksi=hapus&id=<?php echo $row['id_user']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus pengguna ini?')">Hapus</a>
                                             <?php endif; ?>
                                         </td>
                                     </tr>
@@ -65,4 +73,101 @@ include '../includes/sidebar.php';
     </div>
 </div>
 
+<!-- Modal Tambah -->
+<div class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Tambah Pengguna</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <form action="../proses/users_proses.php?aksi=tambah" method="POST">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Nama Lengkap</label>
+                        <input type="text" name="nama" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" name="username" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Role</label>
+                        <select name="role" class="form-control" required>
+                            <option value="admin">Admin</option>
+                            <option value="petugas">Petugas</option>
+                            <option value="kepala_uptd">Kepala UPTD</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Edit -->
+<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Pengguna</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <form action="../proses/users_proses.php?aksi=edit" method="POST">
+                <div class="modal-body">
+                    <input type="hidden" name="id_user" id="edit-id">
+                    <div class="form-group">
+                        <label>Nama Lengkap</label>
+                        <input type="text" name="nama" id="edit-nama" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" name="username" id="edit-username" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password (Kosongkan jika tidak ingin mengubah)</label>
+                        <input type="password" name="password" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Role</label>
+                        <select name="role" id="edit-role" class="form-control" required>
+                            <option value="admin">Admin</option>
+                            <option value="petugas">Petugas</option>
+                            <option value="kepala_uptd">Kepala UPTD</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <?php include '../includes/footer.php'; ?>
+
+<script>
+$(document).ready(function() {
+    $('.btn-edit').on('click', function() {
+        const id = $(this).data('id');
+        const nama = $(this).data('nama');
+        const username = $(this).data('username');
+        const role = $(this).data('role');
+
+        $('#edit-id').val(id);
+        $('#edit-nama').val(nama);
+        $('#edit-username').val(username);
+        $('#edit-role').val(role);
+    });
+});
+</script>
