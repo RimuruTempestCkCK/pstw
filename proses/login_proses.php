@@ -17,7 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['username'] = $user['username'];
             $_SESSION['role'] = $user['role'];
 
-            header("Location: ../dashboard.php");
+            if ($user['role'] == 'kepala_uptd') {
+                header("Location: ../kepala_uptd/dashboard.php");
+            } else {
+                header("Location: ../dashboard.php");
+            }
             exit();
         } else {
             $_SESSION['error'] = "Password salah!";
