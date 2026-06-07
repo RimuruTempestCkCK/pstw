@@ -41,10 +41,16 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="<?php echo $base_url; ?>dashboard.php" class="brand-logo">
+            <!-- <a href="<?php echo $base_url; ?>dashboard.php" class="brand-logo">
                 <img class="logo-abbr" src="<?php echo $base_url; ?>images/logo.png" alt="">
                 <img class="logo-compact" src="<?php echo $base_url; ?>images/logo-text.png" alt="">
                 <img class="brand-title" src="<?php echo $base_url; ?>images/logo-text.png" alt="">
+            </a> -->
+            
+            <a href="<?php echo $base_url; ?>dashboard.php" class="brand-logo">
+                <span class="font-weight-bold" style="font-size:18px; color:#fff;">
+                    PSTW Kasih Sayang Ibu
+                </span>
             </a>
 
             <div class="nav-control">
@@ -65,7 +71,7 @@
                 <nav class="navbar navbar-expand">
                     <div class="collapse navbar-collapse justify-content-between">
                         <div class="header-left">
-                            <div class="search_bar dropdown">
+                            <!-- <div class="search_bar dropdown">
                                 <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
                                     <i class="mdi mdi-magnify"></i>
                                 </span>
@@ -74,7 +80,7 @@
                                         <input class="form-control" type="search" placeholder="Search" aria-label="Search">
                                     </form>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
 
                         <ul class="navbar-nav header-right">
