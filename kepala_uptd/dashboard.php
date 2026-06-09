@@ -48,7 +48,7 @@ include '../includes/sidebar.php';
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="card bg-success text-white border-0 shadow-sm">
+                <div class="card bg-primary text-white border-0 shadow-sm">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
@@ -63,7 +63,7 @@ include '../includes/sidebar.php';
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="card bg-info text-white border-0 shadow-sm">
+                <div class="card bg-primary text-white border-0 shadow-sm">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>

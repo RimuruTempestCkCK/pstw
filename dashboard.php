@@ -58,7 +58,7 @@ include 'includes/sidebar.php';
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6">
-                <div class="card bg-success text-white border-0 shadow-sm">
+                <div class="card bg-primary text-white border-0 shadow-sm">
                     <div class="stat-widget-two card-body">
                         <div class="stat-content">
                             <div class="stat-text text-white">Aktivitas Tercatat</div>
@@ -68,7 +68,7 @@ include 'includes/sidebar.php';
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6">
-                <div class="card bg-warning text-white border-0 shadow-sm">
+                <div class="card bg-primary text-white border-0 shadow-sm">
                     <div class="stat-widget-two card-body">
                         <div class="stat-content">
                             <div class="stat-text text-white">Hasil Prediksi</div>
@@ -78,7 +78,7 @@ include 'includes/sidebar.php';
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6">
-                <div class="card bg-danger text-white border-0 shadow-sm">
+                <div class="card bg-primary text-white border-0 shadow-sm">
                     <div class="stat-widget-two card-body">
                         <div class="stat-content">
                             <div class="stat-text text-white">Total Pengguna</div>
