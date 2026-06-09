@@ -49,7 +49,7 @@
             
             <a href="<?php echo $base_url; ?>dashboard.php" class="brand-logo">
                 <span class="font-weight-bold" style="font-size:18px; color:#fff;">
-                    PSTW Kasih Sayang Ibu
+                    PSTW
                 </span>
             </a>
 
