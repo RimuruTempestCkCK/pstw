@@ -148,7 +148,7 @@ include 'includes/sidebar.php';
             <div class="col-lg-4 col-sm-6">
                 <div class="card border-0 shadow-sm overflow-hidden">
                     <div class="card-body p-0">
-                        <div class="px-4 py-4 bg-success text-white">
+                        <div class="px-4 py-4 bg-primary text-white">
                             <h5 class="text-white opacity-70 mb-2">Lansia Dipantau</h5>
                             <h2 class="text-white mb-0"><?php echo $my_lansia_handled; ?> <small style="font-size: 14px">Orang</small></h2>
                         </div>
@@ -161,7 +161,7 @@ include 'includes/sidebar.php';
             <div class="col-lg-4 col-sm-6">
                 <div class="card border-0 shadow-sm overflow-hidden">
                     <div class="card-body p-0">
-                        <div class="px-4 py-4 bg-info text-white">
+                        <div class="px-4 py-4 bg-primary text-white">
                             <h5 class="text-white opacity-70 mb-2">Total Lansia</h5>
                             <h2 class="text-white mb-0"><?php echo $total_lansia; ?> <small style="font-size: 14px">Total</small></h2>
                         </div>
